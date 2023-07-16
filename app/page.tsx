@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import { getProjects } from "@/sanity/sanity-utils";
 
-import { Fragment } from "react";
+import Link from "next/link";
 
 export default async function Home() {
   const projects = await getProjects();
@@ -24,25 +24,24 @@ export default async function Home() {
 
       <div className="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.map((project) => (
-          <Fragment>
+          <Link
+            href={`/projects/${project.slug}`}
+            key={project._id}
+            className="border-2 border-gray-300 rounded-lg p-1 hover: scale-105 hover: border-blue-200"
+          >
             {project.image && (
               <Image
                 src={project.image}
                 alt={project.name}
-                width={250}
-                height={100}
+                width={750}
+                height={300}
                 className="object-cover rounded-lg border border-gray-300"
               />
             )}
-            <div
-              key={project._id}
-              className="border border-gray-300 rounded-lg p-3"
-            >
-              <div className="bg-gradient-to-r from-orange-400 via-red-400 to-violet-600 bg-clip-text font-bold text-transparent">
-                {project.name}
-              </div>
+            <div className="mt-2 bg-gradient-to-r from-orange-400 via-red-400 to-violet-600 bg-clip-text font-bold text-transparent">
+              {project.name}
             </div>
-          </Fragment>
+          </Link>
         ))}
       </div>
     </div>
