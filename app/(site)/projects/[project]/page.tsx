@@ -12,8 +12,10 @@ export default async function Projects({ params }: Props) {
 
   return (
     <div>
-      <header className="flex items-center justify-between bg-gradient-to-r from-orange-400 via-red-400 to-violet-600 bg-clip-text text-transparent text-3xl drop-shadow font-extrabold">
-        <h1>{project.name}</h1>
+      <header className="flex items-center justify-between">
+        <h1 className="bg-gradient-to-r from-orange-400 via-red-400 to-violet-600 bg-clip-text text-transparent text-3xl drop-shadow font-extrabold">
+          {project.name}
+        </h1>
         <a
           href={project.url}
           title="View Project"
